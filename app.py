@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-from google_drive import upload_file_to_drive
 from data_handler import load_excel, clean_column_names, get_filtered_view
 
 # Streamlit App Configuration
@@ -38,14 +37,6 @@ if uploaded_file:
         filtered_view = get_filtered_view(df, view_type)
         st.dataframe(filtered_view)
 
-        # File Upload to Google Drive
-        st.subheader("📤 Upload to Google Drive")
-        if st.button("Upload File"):
-            folder_id = "1jJvNynJcPKn4bLFVP687ruRsPwvxy5b0"  # Google Drive Folder ID
-            file_data = uploaded_file.getvalue()
-            file_id = upload_file_to_drive(file_data, uploaded_file.name, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", folder_id)
-            file_url = f"https://drive.google.com/file/d/{file_id}/view"
-            st.success(f"File uploaded successfully! [View File]({file_url})")
-
     except Exception as e:
         st.error(f"Failed to process the file: {e}")
+
