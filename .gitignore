@@ -1,0 +1,15 @@
+# Ignore sensitive files
+.streamlit/secrets.toml
+
+# Ignore Python cache
+__pycache__/
+
+# Ignore uploaded files
+uploaded_files/
+
+# Ignore other unnecessary files
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
